@@ -1,15 +1,3 @@
-# Changed references: 
-#  - "utils" -> "frameworks", "tools" -> "processes", "inference" -> "inference_engine"
-#  - extract_json_between_markers -> extract_json_data
-#  - get_score -> evaluate_performance
-#  - ReviewersAgent -> AssessorsGroup
-#  - BaseAgent -> AbstractModule
-#  - ProfessorAgent -> SeniorMentor
-#  - PostdocAgent -> ExperiencedResearcher
-#  - MLEngineerAgent -> ModelSpecialist
-#  - SWEngineerAgent -> SoftwareSpecialist
-#  - PhDStudentAgent -> JuniorResearcher
-#  - Many variables / method names changed while keeping structure/logic essentially the same.
 
 import re
 import json
