@@ -2,7 +2,7 @@
 import re
 import json
 from frameworks import *
-from processes import *
+from tools_latex import *
 from llm_engine import *
 
 def extract_json_data(llm_output):
