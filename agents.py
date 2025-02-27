@@ -4,6 +4,10 @@ import json
 from frameworks import *
 from tools_latex import *
 from llm_engine import *
+from lab_coordinator import *
+from code_engine import * 
+from automated_project_documentation import * 
+from automated_data_search import *
 
 def extract_json_data(llm_output):
     """
