@@ -1,6 +1,6 @@
 # Filename: automated_data_and_paper_search.py
 
-from utils import *
+from tools_latex import *
 
 import time
 import arxiv
