@@ -1,5 +1,3 @@
-# Filename: automated_code_generation_manager.py
-
 import random
 from copy import copy, deepcopy
 import sys
@@ -110,8 +108,8 @@ class Replace(Command):
         Checks if the command string is recognized 
         as a REPLACE command.
         """
-        if "
-REPLACE" in cmd_str:
+        # FIX: Check properly for the substring "\nREPLACE"
+        if "\nREPLACE" in cmd_str:
             return True
         return False
 
@@ -188,8 +186,8 @@ class Edit(Command):
         Checks if the command string is recognized 
         as an EDIT command.
         """
-        if "
-EDIT" in cmd_str:
+        # FIX: Check properly for the substring "\nEDIT"
+        if "\nEDIT" in cmd_str:
             return True
         return False
 
@@ -274,7 +272,7 @@ def code_repair(code, error, ctype, REPAIR_LLM, openai_api_key=None):
             "Your goal: fix the code so that the same "
             "error does not recur, while preserving logic.\n"
             "Wrap final code in:\n"
-            "```python\n<code>\n```\n"
+            "\npython\n<code>\n\n"
         )
         model_resp = query_model(
             openai_api_key=openai_api_key,
@@ -615,8 +613,8 @@ class CodeAutomationManager:
                             repaired_code = code_repair(
                                 model_resp, 
                                 code_err, 
-                                REPAIR_LLM=self.llm_str, 
                                 ctype="edit", 
+                                REPAIR_LLM=self.llm_str, 
                                 openai_api_key=self.openai_api_key
                             )
                             model_resp = repaired_code
@@ -675,9 +673,7 @@ class CodeAutomationManager:
                                 openai_api_key=self.openai_api_key,
                                 REPAIR_LLM=self.llm_str
                             )
-                            repaired_code = f"
-REPLACE\n{repaired_code}\n
-"
+                            repaired_code = f"\nREPLACE\n{repaired_code}\n\n"
                             model_resp = repaired_code
                             print(f"  -> Attempting repair: try {_tries}")
 
@@ -703,7 +699,7 @@ REPLACE\n{repaired_code}\n
                 None, 
                 None, 
                 None
-            )
+        )
 
     def history_str(self):
         """
@@ -884,12 +880,8 @@ REPLACE\n{repaired_code}\n
         Helper to adapt raw LLM outputs to match internal 
         expected command format.
         """
-        text = text.replace("
-\n", "
-")
-        text = text.replace("
-python\n", "
-REPLACE\n")
+        text = text.replace("\n\n", "\n")
+        text = text.replace("\npython\n", "\nREPLACE\n")
         return text
 
     def run_code(self):
@@ -902,3 +894,5 @@ REPLACE\n")
         elif self.should_execute_code:
             return execute_code("\n".join(self.code_lines))
         return "No new code changes to execute."
+
+    
