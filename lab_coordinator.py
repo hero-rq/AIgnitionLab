@@ -1,6 +1,6 @@
 # lab_coordinator.py
 
-from roles import *         # was: from agents import *
+from agents import *
 from copy import copy
 from common_imports import *
 from engines import MLEngine as MLEngine  # was: from mlesolver import MLESolver
