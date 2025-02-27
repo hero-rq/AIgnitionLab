@@ -1,7 +1,6 @@
 
 import re
 import json
-from frameworks import *
 from tools_latex import *
 from llm_engine import *
 from lab_coordinator import *
