@@ -3,7 +3,7 @@ import re
 import json
 from frameworks import *
 from processes import *
-from inference_engine import *
+from llm_engine import *
 
 def extract_json_data(llm_output):
     """
