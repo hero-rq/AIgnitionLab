@@ -1,4 +1,2 @@
-# AIgnitionLab
-(on the progress) \
-good by human su** developers \
-hello to the 100% developing world 
+hello I am newton, 
+this is the test for DevAutomator
