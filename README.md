@@ -1,2 +1,2 @@
 hello I am newton, 
-this is the test for DevAutomator
+this is the test for AutoDev
